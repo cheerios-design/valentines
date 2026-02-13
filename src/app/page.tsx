@@ -22,7 +22,16 @@ export default function Home() {
 
   return (
     <OrientationGuard>
-      <main className="flex items-center justify-center min-h-screen bg-black overflow-hidden relative">
+      <main className="flex items-center justify-center min-h-screen bg-gradient-to-br from-rose-900 via-pink-900 to-red-900 overflow-hidden relative">
+        {/* Valentine background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 text-8xl">💕</div>
+          <div className="absolute top-20 right-20 text-6xl">💖</div>
+          <div className="absolute bottom-20 left-20 text-7xl">💝</div>
+          <div className="absolute bottom-10 right-32 text-9xl">❤️</div>
+          <div className="absolute top-1/3 right-1/4 text-7xl">💗</div>
+          <div className="absolute bottom-1/3 left-1/4 text-6xl">💓</div>
+        </div>
         {!showValentinesProposal ? (
           <motion.div
             initial={{ opacity: 1 }}

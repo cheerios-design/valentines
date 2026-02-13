@@ -9,7 +9,7 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "Valentines: A Romantic Card Game with a Surprise Proposal",
+  title: "Happy Valentines Baby",
   description:
     "Play a unique Valentine's card game. Complete the collection to reveal a romantic proposal!",
   keywords: [
