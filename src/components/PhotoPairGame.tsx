@@ -4,29 +4,30 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-// 18 images
+// 18 actual images + 1 special text card
 const images = [
-  "/game-photos/1.avif",
-  "/game-photos/2.avif",
-  "/game-photos/3.avif",
-  "/game-photos/4.avif",
-  "/game-photos/5.avif",
-  "/game-photos/6.avif",
-  "/game-photos/7.avif",
-  "/game-photos/8.avif",
-  "/game-photos/9.avif",
-  "/game-photos/10.avif",
-  "/game-photos/11.avif",
-  "/game-photos/12.avif",
-  "/game-photos/13.avif",
-  "/game-photos/14.avif",
-  "/game-photos/15.avif",
-  "/game-photos/16.avif",
-  "/game-photos/17.avif",
-  "/game-photos/18.avif",
+  "/game-photos/IMG_1217.HEIC",
+  "/game-photos/IMG_1219.HEIC",
+  "/game-photos/IMG_1266.HEIC",
+  "/game-photos/IMG_1298.HEIC",
+  "/game-photos/IMG_1305.HEIC",
+  "/game-photos/IMG_1312.HEIC",
+  "/game-photos/IMG_1316.HEIC",
+  "/game-photos/IMG_1479.HEIC",
+  "/game-photos/IMG_1520.HEIC",
+  "/game-photos/IMG_1530.HEIC",
+  "/game-photos/IMG_1678.JPG",
+  "/game-photos/IMG_0473.HEIC",
+  "/game-photos/IMG_0516.HEIC",
+  "/game-photos/IMG_0517.HEIC",
+  "/game-photos/IMG_0525.HEIC",
+  "/game-photos/IMG_1211.HEIC",
+  "/game-photos/IMG_1212.HEIC",
+  "/game-photos/IMG_1213.HEIC",
+  "SPECIAL_TEXT_CARD", // 19th item - special text card
 ];
 
-// Create 18 pairs of images (36 images in total)
+// Create 19 pairs (38 cards total)
 const imagePairs = images.flatMap((image) => [image, image]);
 
 const shuffleArray = (array: string[]) => {
@@ -44,7 +45,7 @@ const heartLayout = [
   [null, 20, 21, 22, 23, 24, 25, 26, null],
   [null, null, 27, 28, 29, 30, 31, null, null],
   [null, null, null, 32, 33, 34, null, null, null],
-  [null, null, null, null, 35, null, null, null, null],
+  [null, null, null, 35, 36, 37, null, null, null],
 ];
 
 type ValentinesProposalProps = {
@@ -92,15 +93,18 @@ export default function PhotoPairGame({
     <div className="grid grid-cols-9 gap-1 lg:gap-2 max-w-[95vw] mx-auto place-items-center">
       {/* Image preload */}
       <div className="hidden">
-        {images.map((image, i) => (
-          <Image
-            key={i}
-            src={image}
-            alt={`Image ${i + 1}`}
-            fill
-            className="object-cover"
-            priority
-          />
+        {images.map((image, i) =>
+          image !== "SPECIAL_TEXT_CARD" ? (
+            <Image
+              key={i}
+              src={image}
+              alt={`Image ${i + 1}`}
+              fill
+              className="object-cover"
+              priority
+            />
+          ) : null
+         />
         ))}
       </div>
 
@@ -129,7 +133,7 @@ export default function PhotoPairGame({
               />
             )}
 
-            {/* Front of the card (image) */}
+            {/* Front of the card (image or text) */}
             {(selected.includes(index) || matched.includes(index)) && (
               <motion.div
                 className="w-full h-full absolute"
@@ -138,12 +142,20 @@ export default function PhotoPairGame({
                 transition={{ duration: 0.5 }}
                 style={{ backfaceVisibility: "hidden" }}
               >
-                <Image
-                  src={images[index]}
-                  alt={`Imagen ${index + 1}`}
-                  fill
-                  className="rounded-sm lg:rounded-md object-cover"
-                />
+                {images[index] === "SPECIAL_TEXT_CARD" ? (
+                  <div className="w-full h-full bg-gradient-to-br from-pink-300 via-red-300 to-pink-400 rounded-sm lg:rounded-md flex items-center justify-center">
+                    <span className="font-[family-name:var(--font-great-vibes)] text-4xl lg:text-5xl text-white drop-shadow-lg">
+                      HƏBIBƏ
+                    </span>
+                  </div>
+                ) : (
+                  <Image
+                    src={images[index]}
+                    alt={`Imagen ${index + 1}`}
+                    fill
+                    className="rounded-sm lg:rounded-md object-cover"
+                  />
+                )}
               </motion.div>
             )}
 
