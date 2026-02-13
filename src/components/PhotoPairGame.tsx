@@ -4,26 +4,29 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
+// Base path for GitHub Pages
+const basePath = process.env.NODE_ENV === 'production' ? '/valentines' : '';
+
 // 18 actual images + 1 special text card
 const images = [
-  "/game-photos/IMG_1217.jpg",
-  "/game-photos/IMG_1219.jpg",
-  "/game-photos/IMG_1266.jpg",
-  "/game-photos/IMG_1298.jpg",
-  "/game-photos/IMG_1305.jpg",
-  "/game-photos/IMG_1312.jpg",
-  "/game-photos/IMG_1316.jpg",
-  "/game-photos/IMG_1479.jpg",
-  "/game-photos/IMG_1520.jpg",
-  "/game-photos/IMG_1530.jpg",
-  "/game-photos/IMG_1678.JPG",
-  "/game-photos/IMG_0473.jpg",
-  "/game-photos/IMG_0516.jpg",
-  "/game-photos/IMG_0517.jpg",
-  "/game-photos/IMG_0525.jpg",
-  "/game-photos/IMG_1211.jpg",
-  "/game-photos/IMG_1212.jpg",
-  "/game-photos/IMG_1213.jpg",
+  `${basePath}/game-photos/IMG_1217.jpg`,
+  `${basePath}/game-photos/IMG_1219.jpg`,
+  `${basePath}/game-photos/IMG_1266.jpg`,
+  `${basePath}/game-photos/IMG_1298.jpg`,
+  `${basePath}/game-photos/IMG_1305.jpg`,
+  `${basePath}/game-photos/IMG_1312.jpg`,
+  `${basePath}/game-photos/IMG_1316.jpg`,
+  `${basePath}/game-photos/IMG_1479.jpg`,
+  `${basePath}/game-photos/IMG_1520.jpg`,
+  `${basePath}/game-photos/IMG_1530.jpg`,
+  `${basePath}/game-photos/IMG_1678.JPG`,
+  `${basePath}/game-photos/IMG_0473.jpg`,
+  `${basePath}/game-photos/IMG_0516.jpg`,
+  `${basePath}/game-photos/IMG_0517.jpg`,
+  `${basePath}/game-photos/IMG_0525.jpg`,
+  `${basePath}/game-photos/IMG_1211.jpg`,
+  `${basePath}/game-photos/IMG_1212.jpg`,
+  `${basePath}/game-photos/IMG_1213.jpg`,
   "SPECIAL_TEXT_CARD", // 19th item - special text card
 ];
 
